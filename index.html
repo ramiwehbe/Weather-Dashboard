@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <!-- Font Awesome CSS Icons -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Weather Dashboard</title>
+</head>
+ 
+
+<body>
+
+  <!-- Main Body in Container -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- ROW - Card wrapped in a div -- top title -->
+        <div class="card-top text-center text-white bg-dark mb-3">
+          <div class="card-body ">
+            WEATHER DASHBOARD
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ROW Div for "text-input"  -->
+    <div class="row">
+      <div class="col-lg-3">
+        <!-- <div class="input-group">
+          <input id="search-city" type="submit" class="form-control" placeholder="Search for a city">
+          <div class="input-group-append">
+            <button class="btn btn-secondary" type="submit" id="submit-button"> 
+              </button>-->
+
+        <form id="city-form">
+
+          <!-- Label for Text Box -->
+          <label for="search-city">Search for a city:</label>
+
+          <!-- Text Input Box -->
+          <input type="text" id="city-input">
+
+          <!-- Submit Button -->
+          <button id="search-button" type="submit" value="Search">Submit</button>
+
+        </form>
+
+
+
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-lg-7"></div>
+
+
+  </div>
+
+  <br>
+
+  <!-- ROW Div for list of cities and current weather columns  -->
+
+  <div class="row">
+
+    <!-- Column - card for list of searched on cities -->
+
+    <div class="col-lg-2">
+
+
+
+      <!-- card and wells for cities retreived -->
+      <div class="card" style="width: 18rem;">
+        <!-- This main card will hold each of the previously searched cities -->
+        <div class="city-card-body" id="searched-city">
+        </div>
+      </div>
+
+
+
+      <!-- Ending div for city columns -->
+    </div>
+
+    <!-- Empty column -->
+    <div class="col-lg-2"></div>
+
+    <!-- Column for Current Weather -->
+    <div class="col-lg-8">
+      <h2 class="city">City</h2><br>
+      <h4 class=today-date-text>Today's Date: </h4>
+      <div class="today-date"></div>
+      <br>
+
+      <div class="weather-info"></div>
+
+      <!-- <div class="temp"></div>
+        <div class="humidity"></div>
+        <div class="wind"></div>
+        <div class="uvindex"></div> -->
+
+
+      <!-- Ending div for colummn -->
+    </div>
+  </div>
+
+  <br>
+
+  <!-- ROW div for 5-day forecast text -->
+
+  <div class="col-lg-12">
+    <h2>5-Day Forecast</h2>
+  </div>
+
+  <!-- ROW div for 5 forecast cards -->
+
+  <div class="row">
+
+    <!-- Column / Card 1 -->
+    <div class="col-sm-2">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title">Day 1</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
+          <p class="temp1">Temp: </p>
+          <p class="Humidity1">Humidity: </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column / Card 2 -->
+    <div class="col-sm-2">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title">Day 2</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
+          <p class="temp2">Temp: </p>
+          <p class="Humidity2">Humidity: </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column / Card 3 -->
+    <div class="col-sm-2">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title">Day 3</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
+          <p class="temp3">Temp: </p>
+          <p class="Humidity3">Humidity: </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column / Card 4 -->
+    <div class="col-sm-2">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title">Day 4</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
+          <p class="temp4">Temp: </p>
+          <p class="Humidity4">Humidity: </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Column / Card 5 -->
+    <div class="col-sm-2">
+      <div class="card mt-2">
+        <div class="card-body">
+          <h5 class="card-title">Day 5</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
+          <p class="temp5">Temp: </p>
+          <p class="Humidity5">Humidity: </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty column -->
+    <div class="row">
+      <div class="col-sm-2">
+      </div>
+    </div>
+
+    <!-- Ending div for container -->
+  </div>
+
+  <!-- Ending div for body -->
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
