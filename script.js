@@ -1,18 +1,11 @@
 $(document).ready(function () {
 
-    // Create var for today's date.  Use momentjs for live date.
-
-    var todayDate = $('.today-date');
-    console.log(todayDate)
-
-    $(todayDate).text(moment().format('MM-DD-YYYY'))
-
+    var APIKey = "2d54c14ad67ce359aeba792a000fb367";
 
     function displayCurrentWeather(city) {
 
         // Var for OpenWeather Api Key, Var for text input and a Var to query the database
-
-        var APIKey = "2d54c14ad67ce359aeba792a000fb367";
+        
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
 
         // To convert to Fahrenheit: To get data in API for both current weather and forecast in Fahrenheit just add units=imperial parameter into your API call like in this example:
@@ -76,13 +69,12 @@ $(document).ready(function () {
 
                 weatherInfo.append(wind);
 
-                // Need to figure out how to create var for UV Index response
+                // NEED UV INDEX 
                 // var uvIndexResponse = response.??
 
 
                 // Ending curly bracket for response function 
             });
-        // Ending curly bracket for displayCurrentMovie function
     }
 
 var cityArray = []
@@ -92,42 +84,41 @@ var cityArray = []
     $("#search-button").on("click", function (event) {
 
         // I think I need stop propogation here which is event.stopPropogation() - but I get an error when I add it
+        // console.log(anything);
+        // Preventing the button from trying to submit the form
 
-        // Preventing th button from trying to submit the form
         event.preventDefault();
 
         // Grab the input data 
 
         var inputCityName = $("#city-input").val().trim();
         cityArray.push(inputCityName); 
-        // Setting tio local storage. "searchedCity" iun quotes, so it's not searching for a variable.
 
+        var todayDate = $('.today-date');
+        console.log(todayDate)
+    
+        $(todayDate).text(moment().format('MM/DD/YYYY'))
+
+        $(".city").text(inputCityName)
 
         displayCurrentWeather(inputCityName);
 
         displaySearchedCity(inputCityName);
-console.log(cityArray)
+        console.log(cityArray)
+
     });
 
     // Function to get the stored city
         
     function displaySearchedCity(newCity) {
        
-    
-
-
-       
-
         // var cityArray = storedCity.split(",")
 
-        
+        console.log(cityArray);
 
-        // console.log(cityArray);
+        console.log(storedCity);
 
-        // console.log(storedCity);
-
-        // Push city into the array
-        
+         // Setting to local storage. "searchedCity" in quotes, so it's not searching for a variable.
 
         localStorage.setItem("searchedCity", JSON.stringify(cityArray))
 
@@ -148,6 +139,8 @@ console.log(cityArray)
             cityName.text(cityArray[i]);
             // Adding the button to the buttons-view div
             $(".city-card-body").append(cityName);
+           
+
 
             // ending bracket for loop
         }}

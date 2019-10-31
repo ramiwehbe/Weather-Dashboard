@@ -6,3 +6,20 @@ font-size: xx-large;
 .current-weather {
     list-style-type: none;
 }
+
+.card-body
+{
+    background-color: #1E90FF;
+    color: white;
+
+}
+
+.card-body-top
+{
+    padding: 20px;
+}
+
+body
+{
+    font-family: 'Open Sans', sans-serif;
+}
