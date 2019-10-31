@@ -50,11 +50,11 @@
           <input type="text" id="city-input">
 
           <!-- Submit Button -->
-         
+
           <!-- <i class="fas fa-search"></i> THIS CODE ISN'T WORKING WHEN I PUT IT BELOW - but it works when I use this, so makes no sense to me: <i class="fa fa-thumbs-up"></i>-->
           <button class="btn btn-sm btn-primary" id="search-button" type="submit" value="Search">Search</button>
 
-       
+
 
         </form>
       </div>
@@ -63,144 +63,144 @@
     <!-- Empty space to the right of Search form
  -->
     <div class="col-lg-7"></div>
-  
-
-  <br>
-
-  <!-- ROW Div for list of cities and current weather columns  -->
-
-  <div class="row">
-
-    <!-- Column - card for list of searched on cities -->
-
-    <div class="col-lg-2">
 
 
+    <br>
 
-      <!-- card and wells for cities retreived -->
-      <div class="card" style="border: none">
-        <!-- This main card will hold each of the previously searched cities -->
-        <div class="city-card-body" id="searched-city">
+    <!-- ROW Div for list of cities and current weather columns  -->
+
+    <div class="row">
+
+      <!-- Column - card for list of searched on cities -->
+
+      <div class="col-lg-2">
+
+
+
+        <!-- card and wells for cities retreived -->
+        <div class="card" style="border: none">
+          <!-- This main card will hold each of the previously searched cities -->
+          <div class="city-card-body" id="searched-city">
+          </div>
         </div>
+
+        <!-- Ending div for searched city columns -->
       </div>
 
-      <!-- Ending div for searched city columns -->
-    </div>
+      <!-- Empty columns between searched cities and current weather -->
+      <div class="col-lg-2"></div>
 
-    <!-- Empty columns between searched cities and current weather -->
-    <div class="col-lg-2"></div>
+      <!-- Column for Current Weather -->
+      <div class="col-lg-8">
+        <div class="city"></div>
+        <div class="today-date"></div>
+        <br>
 
-    <!-- Column for Current Weather -->
-    <div class="col-lg-8">
-      <div class="city"></div>
-      <div class="today-date"></div>
-      <br>
+        <div class="weather-info"></div>
 
-      <div class="weather-info"></div>
-
-      <!-- <div class="temp"></div>
+        <!-- <div class="temp"></div>
         <div class="humidity"></div>
         <div class="wind"></div>
         <div class="uvindex"></div> -->
 
-      <!-- Ending div for colummn -->
+        <!-- Ending div for colummn -->
+      </div>
     </div>
+
+    <br>
+
+
+    <!-- ROW div for 5-day forecast text -->
+
+
+
+
+    <div class="row">
+
+      <div class="col-lg-12">
+        <h2>5-Day Forecast</h2>
+      </div>
+    </div>
+
+
+    <!-- ROW div for 5 forecast cards -->
+
+
+    <div class="row">
+
+      <!-- Column / Card 1 -->
+      <div class="col-sm-2">
+        <div class="card mt-2">
+          <div class="card-body">
+            <div class="card-title" id="day-one"></div>
+            <h6 class="card-subtitle mb-2 text-muted" id="icon-one">Icon Image</h6>
+            <p class="one-temp">Temp: </p>
+            <p class="one-humidity">Humidity: </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column / Card 2 -->
+      <div class="col-sm-2">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h5 class="card-title" id="day-two" id="icon-two"></h5>
+            <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
+            <p class="two-temp">Temp: </p>
+            <p class="two-humidity">Humidity: </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column / Card 3 -->
+      <div class="col-sm-2">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h5 class="card-title" id="day-three"></h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="icon-three">Icon Image</h6>
+            <p class="three-temp">Temp: </p>
+            <p class="three-humidity">Humidity: </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column / Card 4 -->
+      <div class="col-sm-2">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h5 class="card-title" id="day-four"></h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="icon-four">Icon Image</h6>
+            <p class="four-temp">Temp: </p>
+            <p class="four-humidity">Humidity: </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Column / Card 5 -->
+      <div class="col-sm-2">
+        <div class="card mt-2">
+          <div class="card-body">
+            <h5 class="card-title" id="day-five"></h5>
+            <h6 class="card-subtitle mb-2 text-muted" id="icon-five">Icon Image</h6>
+            <p class="five-temp">Temp: </p>
+            <p class="five-humidity">Humidity: </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty column -->
+
+      <div class="col-sm-2">
+      </div>
+
+
+      <!-- Ending div for card ROW  -->
+    </div>
+
+
+
+    <!-- Ending div for container -->
   </div>
-
-  <br>
-
-
-  <!-- ROW div for 5-day forecast text -->
-  
-
-
-
-  <div class="row">
-
-    <div class="col-lg-12">
-      <h2>5-Day Forecast</h2>
-    </div>
-  </div>
-
-
-  <!-- ROW div for 5 forecast cards -->
-  
-
-  <div class="row">
-
-    <!-- Column / Card 1 -->
-    <div class="col-sm-2">
-      <div class="card mt-2">
-        <div class="card-body">
-          <h5 class="card-title">Day 1</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
-          <p class="temp1">Temp: </p>
-          <p class="Humidity1">Humidity: </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column / Card 2 -->
-    <div class="col-sm-2">
-      <div class="card mt-2">
-        <div class="card-body">
-          <h5 class="card-title">Day 2</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
-          <p class="temp2">Temp: </p>
-          <p class="Humidity2">Humidity: </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column / Card 3 -->
-    <div class="col-sm-2">
-      <div class="card mt-2">
-        <div class="card-body">
-          <h5 class="card-title">Day 3</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
-          <p class="temp3">Temp: </p>
-          <p class="Humidity3">Humidity: </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column / Card 4 -->
-    <div class="col-sm-2">
-      <div class="card mt-2">
-        <div class="card-body">
-          <h5 class="card-title">Day 4</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
-          <p class="temp4">Temp: </p>
-          <p class="Humidity4">Humidity: </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Column / Card 5 -->
-    <div class="col-sm-2">
-      <div class="card mt-2">
-        <div class="card-body">
-          <h5 class="card-title">Day 5</h5>
-          <h6 class="card-subtitle mb-2 text-muted">Icon Image</h6>
-          <p class="temp5">Temp: </p>
-          <p class="Humidity5">Humidity: </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Empty column -->
-
-    <div class="col-sm-2">
-    </div>
-
-
-    <!-- Ending div for card ROW  -->
-  </div>
-
-
-
-  <!-- Ending div for container -->
-</div>
   <!-- Ending div for body -->
 
   </div>
