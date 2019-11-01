@@ -47,7 +47,7 @@ $(document).ready(function () {
 
                 // Create div to display temp
 
-                var temperature = $("<div>").text("Temperature: " + tempResponse);
+                var temperature = $("<div>").text("Temperature: " + tempResponse + "℉");
 
                 // Append the temp to main WeatherInfo div
 
@@ -59,7 +59,7 @@ $(document).ready(function () {
 
                 // Create div to display humidity
 
-                var humidity = $("<div>").text("Humidity: " + humidityResponse);
+                var humidity = $("<div>").text("Humidity: " + humidityResponse + "%");
 
                 // Append the humidity to main WeatherInfo div
 
@@ -67,11 +67,11 @@ $(document).ready(function () {
 
                 // Create var for wind response:
 
-                var windResponse = response.main.humidity;
+                var windResponse = response.main.wind;
 
                 // Create div to display wind
 
-                var wind = $("<div>").text("Wind Speed: " + windResponse);
+                var wind = $("<div>").text("Wind Speed: " + windResponse + " MPH");
 
                 // Append wind to weatherInfo
 
@@ -104,10 +104,9 @@ $(document).ready(function () {
         localStorage.setItem("searchedCity", JSON.stringify(cityArray))
 
         var storedCity = (JSON.parse(localStorage.getItem(cityArray)));
+        console.log(storedCity);
 
-        // // if (typeof storedCity === "object"){
-        //     storedCity.push
-        // }
+        
         // // for loop over the cityarry and then dynamically append each item in the array to the city-card-body. 
 
         for (var i = 0; i < cityArray.length; i++) {
@@ -125,63 +124,69 @@ $(document).ready(function () {
         }
     }
 
-    // Function to display 5-day forecast dates using moments.js:
+    // Function to display 5-day forecast
 
-    function fiveDayForecastDates(dates) {
+    function displayFiveDayForecast () {
+
+        var forecastCard = $(".card-div");
+
+        forecastCard.addClass("display-five-cards")
 
         var dayOne = $("#day-one");
-
-        console.log(dayOne)
-        // ABOVE NOT WORKING.  CHANGE H5 TO A DIV ON FIRST CARD
-
         var dayTwo = $("#day-two");
-        var dayThree = $("#day-two");
-        var dayFour = $("#day-two");
-        var dayFive = $("#day-two");
+        var dayThree = $("#day-three");
+        var dayFour = $("#day-four");
+        var dayFive = $("#day-five");
 
-        $(dayOne).text(moment().add(1, 'days').calendar())
-        $(dayTwo).text(moment().add(2, 'days').calendar())
-        $(dayThree).text(moment().add(3, 'days').calendar())
-        $(dayFour).text(moment().add(4, 'days').calendar())
-        $(dayFive).text(moment().add(5, 'days').calendar())
-        // Ending curly bracket for fiveDayForecastDates function
+        $(dayOne).text(moment().add(1, 'days').format('MM/DD/YYYY'))
+        $(dayTwo).text(moment().add(2, 'days').format('MM/DD/YYYY'))
+        $(dayThree).text(moment().add(3, 'days').format('MM/DD/YYYY'))
+        $(dayFour).text(moment().add(4, 'days').format('MM/DD/YYYY'))
+        $(dayFive).text(moment().add(5, 'days').format('MM/DD/YYYY'))
+    
+
+
+
+
+        // Ending curly bracket for displayFiveDayForecast
     }
+
 
     // Function to display 5-day forecast temperatures calling OpenWeather:
 
-    function fiveDayForecastTemp(inputCityName) {
+    // function fiveDayForecastTemp(inputCityName) {
 
-        var tempOne = $(".one-temp");
-        var tempTwo = $(".two-temp");
-        var tempThree = $(".three-temp");
-        var tempFour = $(".four-temp");
-        var tempFive = $(".five-temp");
+    //     var tempOne = $(".one-temp");
+    //     var tempTwo = $(".two-temp");
+    //     var tempThree = $(".three-temp");
+    //     var tempFour = $(".four-temp");
+    //     var tempFive = $(".five-temp");
 
-        var queryTemp = "http://api.openweathermap.org/data/2.5/forecast?q=" + inputCityName + "&APPID=" + APIKey;
+    //     var queryTemp = "http://api.openweathermap.org/data/2.5/forecast?q=" + inputCityName + "&APPID=" + APIKey;
 
-        // Run AJAX call to the OpenWeatherMap API
-        $.ajax({
-            url: queryTemp,
-            method: "GET"
-        })
+    //     // Run AJAX call to the OpenWeatherMap API
+    //     $.ajax({
+    //         url: queryTemp,
+    //         method: "GET"
+    //     })
 
-            // Store retrieved data inside of an object called "response"
-            .then(function (responseTemp) {
-                console.log(queryTemp);
-                console.log(responseTemp);
+            // // Store retrieved data inside of an object called "response"
+            // .then(function (responseTemp) {
+            //     console.log(queryTemp);
+            //     console.log(responseTemp);
 
-                for (var i = 0; i < 5; i++) {
+            //     for (var i = 0; i < 5; i++) {
 
-                    console.log(responseTemp.list[i].main.temp)
+            //         console.log(responseTemp.list[i].main.temp)
 
-                }
+            //     }
 
-                // Create var for temperature response
+            //     // Create var for temperature response
 
-                var tempResponse = response.main.temp;
+            //     var tempResponse = response.main.temp;
 
-            }
-            )}
+            // }
+            // )}
         
 
     // //    Function to display 5-day forecast humidity calling OpenWeather:
@@ -227,10 +232,19 @@ $(document).ready(function () {
 
         $(".city").text(inputCityName)
 
+        // 5-Day Forecast
+
+        var fiveDayText = $('#five-day-text')
+        console.log(fiveDayText)
+        $(fiveDayText).text("5-Day Forecast: ")
+
+
+        // Call functions
+
         displayCurrentWeather(inputCityName);
         displaySearchedCity(inputCityName);
-        fiveDayForecastDates();
-        fiveDayForecastTemp(inputCityName)
+        displayFiveDayForecast();
+        // fiveDayForecastTemp(inputCityName)
         console.log(cityArray)
 
     });
@@ -243,8 +257,9 @@ $(document).ready(function () {
 
 
 // TO DO:
-// CONVERT TEMP TO FAHRENHEIT
 // UV INDEX
+// SEARCH ICON
 // NEED TO DO THE 5-DAY FORECAST
-// CITY INFO NEEDS TO CLEAR AFTER HIT SUBMIT
-// NEED ICONS IN 5-DAY FORE
+// NEED ICONS IN 5-DAY FORECAST
+// WIND SPEED AND HUMIDITY ARE RENDERING THE SAME
+// MAKE PREVIOUSLY SEARCHED CITY 
