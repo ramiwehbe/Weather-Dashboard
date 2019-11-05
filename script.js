@@ -37,6 +37,7 @@ $(document).ready(function () {
 
                 // Create a var for weather-info div
 
+            
                 var weatherInfo = $(".weather-info");
 
                 console.log(weatherInfo);
@@ -67,7 +68,9 @@ $(document).ready(function () {
 
                 // Create var for wind response:
 
-                var windResponse = response.main.wind;
+                var windResponse = response.wind.speed;
+
+                console.log("response is: " , response)
 
                 // Create div to display wind
 
@@ -77,13 +80,12 @@ $(document).ready(function () {
 
                 weatherInfo.append(wind);
 
-                // NEED UV INDEX 
-                // var uvIndexResponse = response.??
-
 
                 // Ending curly bracket for response function 
             });
     }
+
+// function displayUVIndex(city)
 
 
     // Function to get the stored city to display on the left:
@@ -97,7 +99,6 @@ $(document).ready(function () {
 
         console.log(cityArray);
 
-        console.log(storedCity);
 
         // Setting to local storage. "searchedCity" in quotes, so it's not searching for a variable.
 
@@ -106,7 +107,7 @@ $(document).ready(function () {
         var storedCity = (JSON.parse(localStorage.getItem(cityArray)));
         console.log(storedCity);
 
-        
+
         // // for loop over the cityarry and then dynamically append each item in the array to the city-card-body. 
 
         for (var i = 0; i < cityArray.length; i++) {
@@ -126,11 +127,14 @@ $(document).ready(function () {
 
     // Function to display 5-day forecast
 
-    function displayFiveDayForecast () {
+    function displayFiveDayForecast() {
 
-        var forecastCard = $(".card-div");
 
-        forecastCard.addClass("display-five-cards")
+        var forecastCard = $("#forecast-card").siblings()
+
+        console.log(forecastCard);
+
+        // $("#forecast-card").empty()
 
         var dayOne = $("#day-one");
         var dayTwo = $("#day-two");
@@ -138,15 +142,47 @@ $(document).ready(function () {
         var dayFour = $("#day-four");
         var dayFive = $("#day-five");
 
+        $("#day-one").empty()
+        $("#day-two").empty()
+        $("#day-three").empty()
+        $("#day-four").empty()
+        $("#day-five").empty()
+
         $(dayOne).text(moment().add(1, 'days').format('MM/DD/YYYY'))
         $(dayTwo).text(moment().add(2, 'days').format('MM/DD/YYYY'))
         $(dayThree).text(moment().add(3, 'days').format('MM/DD/YYYY'))
         $(dayFour).text(moment().add(4, 'days').format('MM/DD/YYYY'))
         $(dayFive).text(moment().add(5, 'days').format('MM/DD/YYYY'))
+
+        // var tempForecastResponse = 
+        // ADD ABOVE INTO BELOW VAR
+
     
+        var tempForecast = $("<div>").text("Temp: " + "℉")
+
+        // forecastCard.append(tempForecast)
+
+        dayOne.append(tempForecast)
+        dayTwo.append(tempForecast)
+        dayThree.append(tempForecast)
+        dayFour.append(tempForecast)
+        dayFive.append(tempForecast)
+
+        var weatherIcon = $("<div>").text("Weather Icon")
+
+        forecastCard.append(weatherIcon)
+
+           tempForecast.append(weatherIcon)
 
 
+        // var humidityForecastResponse = 
+        // ADD ABOVE INTO BELOW VAR
+        var humidityForecast = $("<div>").text("Humidity: " + "%")
 
+        forecastCard.append(humidityForecast)
+
+
+        
 
         // Ending curly bracket for displayFiveDayForecast
     }
@@ -154,40 +190,42 @@ $(document).ready(function () {
 
     // Function to display 5-day forecast temperatures calling OpenWeather:
 
-    // function fiveDayForecastTemp(inputCityName) {
+function fiveDayForecastTemp(inputCityName) {
+    var queryTemp = "http://api.openweathermap.org/data/2.5/forecast?q=" + inputCityName + "&APPID=" + APIKey;
 
-    //     var tempOne = $(".one-temp");
-    //     var tempTwo = $(".two-temp");
-    //     var tempThree = $(".three-temp");
-    //     var tempFour = $(".four-temp");
-    //     var tempFive = $(".five-temp");
+    // Run AJAX call to the OpenWeatherMap API
+        $.ajax({
+            url: queryTemp,
+            method: "GET"
+        })
 
-    //     var queryTemp = "http://api.openweathermap.org/data/2.5/forecast?q=" + inputCityName + "&APPID=" + APIKey;
+       
+// Store retrieved data inside of an object called "responseTemp"
 
-    //     // Run AJAX call to the OpenWeatherMap API
-    //     $.ajax({
-    //         url: queryTemp,
-    //         method: "GET"
-    //     })
+.then (function (responseTemp){
 
-            // // Store retrieved data inside of an object called "response"
-            // .then(function (responseTemp) {
-            //     console.log(queryTemp);
-            //     console.log(responseTemp);
+    console.log(responseTemp)
 
-            //     for (var i = 0; i < 5; i++) {
+   //     for (var i = 0; i < 5; i++) {
 
-            //         console.log(responseTemp.list[i].main.temp)
+    //         console.log(responseTemp.list[i].main.temp)
 
-            //     }
+    //     }
 
-            //     // Create var for temperature response
+    //     // Create var for temperature response
 
-            //     var tempResponse = response.main.temp;
+    //     var tempResponse = response.main.temp;
 
-            // }
-            // )}
-        
+    // }
+    // )}
+
+})
+}
+
+
+
+ 
+
 
     // //    Function to display 5-day forecast humidity calling OpenWeather:
 
@@ -210,10 +248,6 @@ $(document).ready(function () {
     // }
 
 
-
-
-
-
     // CLICK EVENT:
 
     $("#search-button").on("click", function (event) {
@@ -225,12 +259,15 @@ $(document).ready(function () {
         var inputCityName = $("#city-input").val().trim();
         cityArray.push(inputCityName);
 
+        $(".city").text((inputCityName) + " ")
+
         var todayDate = $('.today-date');
         console.log(todayDate)
+        
 
-        $(todayDate).text(moment().format('MM/DD/YYYY'))
+        $(todayDate).text(" (" + (moment().format('MM/DD/YYYY')) + ")")
 
-        $(".city").text(inputCityName)
+        
 
         // 5-Day Forecast
 
@@ -244,7 +281,7 @@ $(document).ready(function () {
         displayCurrentWeather(inputCityName);
         displaySearchedCity(inputCityName);
         displayFiveDayForecast();
-        // fiveDayForecastTemp(inputCityName)
+        fiveDayForecastTemp(inputCityName)
         console.log(cityArray)
 
     });
@@ -254,6 +291,13 @@ $(document).ready(function () {
     // Closing curly bracket for document ready function
 })
 
+// Listening for a click on a searched city to display that city's weather again
+$(".city-card-body").on("click", function(event){
+    console.log("hello");
+    
+
+
+})
 
 
 // TO DO:

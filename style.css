@@ -31,4 +31,9 @@ body
     padding: 20px;
 }
 
+.city-and-date {
+
+    display: inline-flex;
+}
+
 
