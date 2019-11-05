@@ -295,7 +295,7 @@ function fiveDayForecastTemp(inputCityName) {
 })
 
 // Listening for a click on a searched city to display that city's weather again
-$("#new-city-p").on("click", function(event){
+$(".new-city-p").on("click", function(event){
     console.log("hello");
 
 })
