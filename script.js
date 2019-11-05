@@ -85,7 +85,12 @@ $(document).ready(function () {
             });
     }
 
-// function displayUVIndex(city)
+// function geographicCoordinates(inputCityName) {
+
+//     var query
+//      = 
+
+// }
 
 
     // Function to get the stored city to display on the left:
@@ -104,8 +109,8 @@ $(document).ready(function () {
 
         localStorage.setItem("searchedCity", JSON.stringify(cityArray))
 
-        var storedCity = (JSON.parse(localStorage.getItem(cityArray)));
-        console.log(storedCity);
+        // var storedCity = (JSON.parse(localStorage.getItem(cityArray[i])));
+        // console.log(storedCity);
 
 
         // // for loop over the cityarry and then dynamically append each item in the array to the city-card-body. 
@@ -115,6 +120,8 @@ $(document).ready(function () {
 
             // Adding a class of new-city-p to <p>
             cityName.addClass("new-city-p");
+
+            cityName.attr(cityArray[i]);
 
             // Providing the <p> text
             cityName.text(cityArray[i]);
@@ -223,10 +230,6 @@ function fiveDayForecastTemp(inputCityName) {
 }
 
 
-
- 
-
-
     // //    Function to display 5-day forecast humidity calling OpenWeather:
 
     // function fiveDayForecastHumidity(humidity) {
@@ -248,7 +251,7 @@ function fiveDayForecastTemp(inputCityName) {
     // }
 
 
-    // CLICK EVENT:
+    // CLICK EVENT FOR SEARCH BUTTON:
 
     $("#search-button").on("click", function (event) {
 
@@ -292,10 +295,8 @@ function fiveDayForecastTemp(inputCityName) {
 })
 
 // Listening for a click on a searched city to display that city's weather again
-$(".city-card-body").on("click", function(event){
+$("#new-city-p").on("click", function(event){
     console.log("hello");
-    
-
 
 })
 
@@ -305,5 +306,4 @@ $(".city-card-body").on("click", function(event){
 // SEARCH ICON
 // NEED TO DO THE 5-DAY FORECAST
 // NEED ICONS IN 5-DAY FORECAST
-// WIND SPEED AND HUMIDITY ARE RENDERING THE SAME
-// MAKE PREVIOUSLY SEARCHED CITY 
+// MAKE PREVIOUSLY SEARCHED CITY CLICK EVENT
